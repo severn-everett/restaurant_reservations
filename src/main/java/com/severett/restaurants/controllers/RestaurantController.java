@@ -1,14 +1,17 @@
 package com.severett.restaurants.controllers;
 
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestMethod;
 
-@RestController
+@Controller
 public class RestaurantController {
 
-	@RequestMapping("/")
-	public String index() {
-		return "Hello, world!";
+	@RequestMapping(method=RequestMethod.GET, value="/")
+	public String index(Model model) {
+		model.addAttribute("restaurantName", "Test Restaurant");
+		return "index";
 	}
-	
+		
 }
