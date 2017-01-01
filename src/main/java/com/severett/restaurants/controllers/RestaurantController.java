@@ -13,5 +13,22 @@ public class RestaurantController {
 		model.addAttribute("restaurantName", "Test Restaurant");
 		return "index";
 	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/add")
+	public String addReservation(Model model) {
 		
+		return "addReservation";
+	}
+	
+	@RequestMapping(method=RequestMethod.GET, value="/confirm")
+	public String confirmReservation(Model model) {
+		
+		return "confirmReservation";
+	}
+	
+	@RequestMapping(method=RequestMethod.POST, value="/confirm")
+	public String saveReservation(Model model) {
+		
+		return "reserveSuccess";
+	}
 }
