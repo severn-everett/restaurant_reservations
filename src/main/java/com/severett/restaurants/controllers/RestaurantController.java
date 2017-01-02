@@ -1,12 +1,18 @@
 package com.severett.restaurants.controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.severett.restaurants.services.ReservationService;
+
 @Controller
 public class RestaurantController {
+	
+	@Autowired
+	ReservationService reservationService;
 
 	@RequestMapping(method=RequestMethod.GET, value="/")
 	public String index(Model model) {

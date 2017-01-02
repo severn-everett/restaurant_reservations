@@ -1,21 +1,39 @@
 package com.severett.restaurants.model;
 
-import java.time.LocalDate;
+import java.io.Serializable;
+import java.util.Date;
 
-public class Reservation {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
+@Entity
+public class Reservation implements Serializable {
+
+	private static final long serialVersionUID = -9096118012365741262L;
+
+	@Id
+	@GeneratedValue
 	private Integer id;
 	
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="TABLE_ID")
 	private Table table;
 	
-	private LocalDate startTime;
+	@Column(name="START_TIME", nullable=false)
+	private Date startTime;
 	
-	private LocalDate endTime;
+	@Column(name="END_TIME", nullable=false)
+	private Date endTime;
 	
 	protected Reservation() {
 	}
 	
-	public Reservation(Table table, LocalDate startTime, LocalDate endTime) {
+	public Reservation(Table table, Date startTime, Date endTime) {
 		this.table = table;
 		this.startTime = startTime;
 		this.endTime = endTime;
@@ -37,19 +55,19 @@ public class Reservation {
 		this.table = table;
 	}
 	
-	public LocalDate getStartTime() {
+	public Date getStartTime() {
 		return this.startTime;
 	}
 	
-	public void setStartTime(LocalDate startTime) {
+	public void setStartTime(Date startTime) {
 		this.startTime = startTime;
 	}
 	
-	public LocalDate getEndTime() {
+	public Date getEndTime() {
 		return this.endTime;
 	}
 	
-	public void setEndTime(LocalDate endTime) {
+	public void setEndTime(Date endTime) {
 		this.endTime = endTime;
 	}
 }
