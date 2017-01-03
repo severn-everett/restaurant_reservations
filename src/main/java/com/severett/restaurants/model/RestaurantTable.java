@@ -10,13 +10,13 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Table implements Serializable {
+public class RestaurantTable implements Serializable {
 
 	private static final long serialVersionUID = 3355578631079182599L;
 
 	@Id
 	@GeneratedValue
-	private Byte id;
+	private Short id;
 	
 	@Column(name="CAPACITY", nullable=false)
 	private Byte capacity;
@@ -24,18 +24,18 @@ public class Table implements Serializable {
 	@OneToMany(mappedBy="table")
 	private Set<Reservation> reservations;
 	
-	protected Table() {
+	protected RestaurantTable() {
 	}
 	
-	public Table(Byte capacity) {
+	public RestaurantTable(Byte capacity) {
 		this.capacity = capacity;
 	}
 	
-	public Byte getId() {
+	public Short getId() {
 		return id;
 	}
 	
-	public void setId(Byte id) {
+	public void setId(Short id) {
 		this.id = id;
 	}
 	

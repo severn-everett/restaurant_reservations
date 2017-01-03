@@ -12,7 +12,7 @@ public class DateHours implements Serializable {
 
 	@Id
 	@GeneratedValue
-	private Byte id;
+	private Short id;
 	
 	@Column(name="START_HOUR", nullable=false)
 	private Integer startHour;
@@ -28,11 +28,11 @@ public class DateHours implements Serializable {
 		this.endHour = endHour;
 	}
 	
-	public Byte getId() {
+	public Short getId() {
 		return id;
 	}
 	
-	public void setId(Byte id) {
+	public void setId(Short id) {
 		this.id = id;
 	}
 	

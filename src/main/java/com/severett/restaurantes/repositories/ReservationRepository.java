@@ -1,9 +1,11 @@
 package com.severett.restaurantes.repositories;
 
-import org.springframework.data.repository.Repository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 
 import com.severett.restaurants.model.Reservation;
 
-public interface ReservationRepository extends Repository<Reservation, Integer> {
+@Repository
+public interface ReservationRepository extends JpaRepository<Reservation, Integer> {
 
 }

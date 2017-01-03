@@ -21,8 +21,8 @@ public class Reservation implements Serializable {
 	private Integer id;
 	
 	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="TABLE_ID")
-	private Table table;
+	@JoinColumn(name="RESTAURANT_TABLE_ID")
+	private RestaurantTable restaurantTable;
 	
 	@Column(name="START_TIME", nullable=false)
 	private Date startTime;
@@ -33,8 +33,8 @@ public class Reservation implements Serializable {
 	protected Reservation() {
 	}
 	
-	public Reservation(Table table, Date startTime, Date endTime) {
-		this.table = table;
+	public Reservation(RestaurantTable restaurantTable, Date startTime, Date endTime) {
+		this.restaurantTable = restaurantTable;
 		this.startTime = startTime;
 		this.endTime = endTime;
 	}
@@ -47,12 +47,12 @@ public class Reservation implements Serializable {
 		this.id = id;
 	}
 	
-	public Table getTable() {
-		return this.table;
+	public RestaurantTable getRestaurantTable() {
+		return this.restaurantTable;
 	}
 	
-	public void setTable(Table table) {
-		this.table = table;
+	public void setRestaurantTable(RestaurantTable restaurantTable) {
+		this.restaurantTable = restaurantTable;
 	}
 	
 	public Date getStartTime() {
