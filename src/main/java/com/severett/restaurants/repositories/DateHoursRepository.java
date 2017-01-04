@@ -1,4 +1,4 @@
-package com.severett.restaurantes.repositories;
+package com.severett.restaurants.repositories;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

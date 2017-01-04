@@ -1,4 +1,4 @@
-package com.severett.restaurantes.repositories;
+package com.severett.restaurants.repositories;
 
 import java.util.Date;
 

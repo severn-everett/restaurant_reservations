@@ -9,8 +9,8 @@ import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.severett.restaurantes.repositories.RestaurantTableRepository;
 import com.severett.restaurants.model.RestaurantTable;
+import com.severett.restaurants.repositories.RestaurantTableRepository;
 
 @Service
 public class RestaurantTableServiceImpl implements RestaurantTableService {
