@@ -1,5 +1,8 @@
 package com.severett.restaurants.services;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -16,11 +19,17 @@ public class DateHoursServiceImpl implements DateHoursService {
 	private DateHoursRepository dateHoursRepository;
 
 	@Override
-	public DateHours getDateHours(Date targetDate) {
-		Calendar calendar = Calendar.getInstance();
-		calendar.setTime(targetDate);
-		Short dayOfWeek = (short) calendar.get(Calendar.DAY_OF_WEEK);
-		return dateHoursRepository.findOne(dayOfWeek);
+	public DateHours getDateHours(String targetDateString) {
+		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
+		try {
+			Date targetDate = df.parse(targetDateString);
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(targetDate);
+			Short dayOfWeek = (short) calendar.get(Calendar.DAY_OF_WEEK);
+			return dateHoursRepository.findOne(dayOfWeek);
+		} catch (ParseException pe) {
+			pe.printStackTrace();
+			return null;
+		}
 	}
-
 }

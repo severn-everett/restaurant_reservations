@@ -1,9 +1,5 @@
 package com.severett.restaurants.controllers;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -24,26 +20,14 @@ public class AvailabilityRestController {
 	@Autowired
 	DateHoursService dateHoursService;
 	
-	@RequestMapping("/tables")
-	public Map<String, Object> getOpenTables() {
-		Map<String, Object> tablesMap = new HashMap<>();
-		
-		return tablesMap;
-	}
-	
 	@RequestMapping("/hours")
-	public Map<String, Integer> getAvailableHours(@RequestParam(value="date") String dateString) {
+	public Map<String, Integer> getAvailableHours(@RequestParam(value="date") String targetDateString) {
 		Map<String, Integer> hoursMap = new HashMap<>();
-		DateFormat df = new SimpleDateFormat("MM/dd/yyyy");
-		try {
-			Date targetDate = df.parse(dateString);
-			DateHours dateHours = dateHoursService.getDateHours(targetDate);
+		DateHours dateHours = dateHoursService.getDateHours(targetDateString);
+		if (dateHours != null) {
 			hoursMap.put(BEGIN_HOUR, dateHours.getStartHour());
 			hoursMap.put(END_HOUR, dateHours.getEndHour());
-		} catch (ParseException pe) {
-			pe.printStackTrace();
 		}
 		return hoursMap;
-	}
-	
+	}	
 }

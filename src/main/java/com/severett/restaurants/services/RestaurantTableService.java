@@ -6,4 +6,5 @@ public interface RestaurantTableService {
 
 	public RestaurantTable findRestaurantTable(Short tableId);
 	
+	public RestaurantTable getOpenRestaurantTable(Short partySize, String targetTimeString);
 }

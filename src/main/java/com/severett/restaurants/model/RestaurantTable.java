@@ -19,7 +19,7 @@ public class RestaurantTable implements Serializable {
 	private Short id;
 	
 	@Column(name="CAPACITY", nullable=false)
-	private Byte capacity;
+	private Short capacity;
 	
 	@OneToMany(mappedBy="table")
 	private Set<Reservation> reservations;
@@ -27,7 +27,7 @@ public class RestaurantTable implements Serializable {
 	protected RestaurantTable() {
 	}
 	
-	public RestaurantTable(Byte capacity) {
+	public RestaurantTable(Short capacity) {
 		this.capacity = capacity;
 	}
 	
@@ -39,11 +39,11 @@ public class RestaurantTable implements Serializable {
 		this.id = id;
 	}
 	
-	public Byte getCapacity() {
+	public Short getCapacity() {
 		return capacity;
 	}
 	
-	public void setCapacity(Byte capacity) {
+	public void setCapacity(Short capacity) {
 		this.capacity = capacity;
 	}
 	

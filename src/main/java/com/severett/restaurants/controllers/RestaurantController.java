@@ -29,14 +29,20 @@ public class RestaurantController {
 	
 	@RequestMapping(method=RequestMethod.GET, value="/add")
 	public String addReservation(Model model) {
-		
 		return "addReservation";
 	}
 	
-	@RequestMapping(method=RequestMethod.GET, value="/confirm")
-	public String confirmReservation(Model model) {
-		
-		return "confirmReservation";
+	@RequestMapping(method=RequestMethod.POST, value="/confirm")
+	public String confirmReservation(Model model, @RequestParam(value="partySize") Short partySize, @RequestParam(value="targetTime") String targetTimeString) {
+		RestaurantTable openRestaurantTable = restaurantTableService.getOpenRestaurantTable(partySize, targetTimeString);
+		if (openRestaurantTable != null) {
+			model.addAttribute("tableId", openRestaurantTable.getId());
+			model.addAttribute("partySize", partySize);
+			model.addAttribute("targetTime", targetTimeString);
+			return "confirmReservation";
+		} else {
+			return "noTableAvailable";
+		}
 	}
 	
 	@RequestMapping(method=RequestMethod.POST, value="/confirm")
