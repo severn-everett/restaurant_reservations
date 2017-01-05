@@ -9,7 +9,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-@Entity
+@Entity(name="DATE_HOURS")
 public class RestaurantTable implements Serializable {
 
 	private static final long serialVersionUID = 3355578631079182599L;

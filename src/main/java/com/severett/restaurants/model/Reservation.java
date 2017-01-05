@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
-@Entity
+@Entity(name="RESERVATION")
 public class Reservation implements Serializable {
 
 	private static final long serialVersionUID = -9096118012365741262L;
