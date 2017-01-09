@@ -21,8 +21,8 @@ public class AvailabilityRestController {
 	DateHoursService dateHoursService;
 	
 	@RequestMapping("/hours")
-	public Map<String, Integer> getAvailableHours(@RequestParam(value="date") String targetDateString) {
-		Map<String, Integer> hoursMap = new HashMap<>();
+	public Map<String, Short> getAvailableHours(@RequestParam(value="date") String targetDateString) {
+		Map<String, Short> hoursMap = new HashMap<>();
 		DateHours dateHours = dateHoursService.getDateHours(targetDateString);
 		if (dateHours != null) {
 			hoursMap.put(BEGIN_HOUR, dateHours.getStartHour());

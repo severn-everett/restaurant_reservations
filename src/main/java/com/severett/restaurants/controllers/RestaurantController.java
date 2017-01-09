@@ -32,7 +32,7 @@ public class RestaurantController {
 		return "addReservation";
 	}
 	
-	@RequestMapping(method=RequestMethod.POST, value="/confirm")
+	@RequestMapping(method=RequestMethod.GET, value="/confirm")
 	public String confirmReservation(Model model, @RequestParam(value="partySize") Short partySize, @RequestParam(value="targetTime") String targetTimeString) {
 		RestaurantTable openRestaurantTable = restaurantTableService.getOpenRestaurantTable(partySize, targetTimeString);
 		if (openRestaurantTable != null) {

@@ -8,8 +8,10 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-@Entity(name="DATE_HOURS")
+@Entity
+@Table(name="RESTAURANT_TABLE")
 public class RestaurantTable implements Serializable {
 
 	private static final long serialVersionUID = 3355578631079182599L;
@@ -21,7 +23,7 @@ public class RestaurantTable implements Serializable {
 	@Column(name="CAPACITY", nullable=false)
 	private Short capacity;
 	
-	@OneToMany(mappedBy="table")
+	@OneToMany(mappedBy="restaurantTable")
 	private Set<Reservation> reservations;
 	
 	protected RestaurantTable() {

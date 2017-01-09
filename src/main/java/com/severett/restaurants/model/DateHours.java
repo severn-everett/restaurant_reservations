@@ -6,8 +6,10 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Table;
 
-@Entity(name="DATE_HOURS")
+@Entity
+@Table(name="DATE_HOURS")
 public class DateHours implements Serializable {
 
 	private static final long serialVersionUID = 282606846037861934L;
