@@ -11,3 +11,9 @@ target/
 
 ### MVN ###
 .mvn/
+
+### VIM ###
+*.swp
+
+### LOG4J2 ###
+applogs/
