@@ -5,13 +5,15 @@ import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.severett.restaurants.model.DateHours;
 import com.severett.restaurants.services.DateHoursService;
 
-@RestController(value="/availability")
+@RestController
+@RequestMapping("/availability")
 public class AvailabilityRestController {
 	
 	private static final String BEGIN_HOUR = "beginHour";
@@ -20,7 +22,7 @@ public class AvailabilityRestController {
 	@Autowired
 	DateHoursService dateHoursService;
 	
-	@RequestMapping("/hours")
+	@RequestMapping(method=RequestMethod.GET, value="/hours")
 	public Map<String, Short> getAvailableHours(@RequestParam(value="date") String targetDateString) {
 		Map<String, Short> hoursMap = new HashMap<>();
 		DateHours dateHours = dateHoursService.getDateHours(targetDateString);

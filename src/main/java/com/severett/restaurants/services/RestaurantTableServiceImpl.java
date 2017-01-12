@@ -18,7 +18,7 @@ import com.severett.restaurants.repositories.RestaurantTableRepository;
 @Service
 public class RestaurantTableServiceImpl implements RestaurantTableService {
 	
-	private final Logger logger = LoggerFactory.getLogger(this.getClass());
+	private static final Logger logger = LoggerFactory.getLogger(RestaurantTableService.class);
 	private static final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
 	@Autowired
