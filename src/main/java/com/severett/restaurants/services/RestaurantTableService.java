@@ -4,7 +4,8 @@ import com.severett.restaurants.model.RestaurantTable;
 
 public interface RestaurantTableService {
 
-	public RestaurantTable findRestaurantTable(Short tableId);
-	
-	public RestaurantTable getOpenRestaurantTable(Short partySize, String targetTimeString);
+    public RestaurantTable findRestaurantTable(Short tableId);
+
+    public RestaurantTable getOpenRestaurantTable(Short partySize, String targetTimeString);
+
 }

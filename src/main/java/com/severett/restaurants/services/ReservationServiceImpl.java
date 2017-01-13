@@ -15,23 +15,23 @@ import com.severett.restaurants.repositories.ReservationRepository;
 @Service
 public class ReservationServiceImpl implements ReservationService {
 
-	@Autowired
-	ReservationRepository reservationRepository;
+    @Autowired
+    ReservationRepository reservationRepository;
 
-	@Override
-	public Reservation createReservation(RestaurantTable restaurantTable, String startTimeString) {
-		SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
-		try {
-			Date startTimeDate = formatter.parse(startTimeString);
-			Calendar calendar = Calendar.getInstance();
-			calendar.setTime(startTimeDate);
-			calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) + 1);
-			Date endTimeDate = calendar.getTime();
-			Reservation reservation = new Reservation(restaurantTable, startTimeDate, endTimeDate);
-			return reservationRepository.saveAndFlush(reservation);
-		} catch (ParseException e) {
-			e.printStackTrace();
-			return null;
-		}
-	}	
+    @Override
+    public Reservation createReservation(RestaurantTable restaurantTable, String startTimeString) {
+        SimpleDateFormat formatter = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+        try {
+            Date startTimeDate = formatter.parse(startTimeString);
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTime(startTimeDate);
+            calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) + 1);
+            Date endTimeDate = calendar.getTime();
+            Reservation reservation = new Reservation(restaurantTable, startTimeDate, endTimeDate);
+            return reservationRepository.saveAndFlush(reservation);
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
 }

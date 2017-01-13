@@ -14,46 +14,46 @@ import javax.persistence.Table;
 @Table(name="RESTAURANT_TABLE")
 public class RestaurantTable implements Serializable {
 
-	private static final long serialVersionUID = 3355578631079182599L;
+    private static final long serialVersionUID = 3355578631079182599L;
 
-	@Id
-	@GeneratedValue
-	private Short id;
-	
-	@Column(name="CAPACITY", nullable=false)
-	private Short capacity;
-	
-	@OneToMany(mappedBy="restaurantTable")
-	private Set<Reservation> reservations;
-	
-	protected RestaurantTable() {
-	}
-	
-	public RestaurantTable(Short capacity) {
-		this.capacity = capacity;
-	}
-	
-	public Short getId() {
-		return id;
-	}
-	
-	public void setId(Short id) {
-		this.id = id;
-	}
-	
-	public Short getCapacity() {
-		return capacity;
-	}
-	
-	public void setCapacity(Short capacity) {
-		this.capacity = capacity;
-	}
-	
-	public Set<Reservation> getReservations() {
-		return reservations;
-	}
-	
-	public void setReservations(Set<Reservation> reservations) {
-		this.reservations = reservations;
-	}
+    @Id
+    @GeneratedValue
+    private Short id;
+
+    @Column(name="CAPACITY", nullable=false)
+    private Short capacity;
+
+    @OneToMany(mappedBy="restaurantTable")
+    private Set<Reservation> reservations;
+
+    protected RestaurantTable() {
+    }
+
+    public RestaurantTable(Short capacity) {
+        this.capacity = capacity;
+    }
+
+    public Short getId() {
+        return id;
+    }
+
+    public void setId(Short id) {
+        this.id = id;
+    }
+
+    public Short getCapacity() {
+        return capacity;
+    }
+
+    public void setCapacity(Short capacity) {
+        this.capacity = capacity;
+    }
+
+    public Set<Reservation> getReservations() {
+        return reservations;
+    }
+
+    public void setReservations(Set<Reservation> reservations) {
+        this.reservations = reservations;
+    }
 }

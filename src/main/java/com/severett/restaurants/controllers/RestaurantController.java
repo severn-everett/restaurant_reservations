@@ -14,46 +14,46 @@ import com.severett.restaurants.services.RestaurantTableService;
 
 @Controller
 public class RestaurantController {
-	
-	@Autowired
-	ReservationService reservationService;
-	
-	@Autowired
-	RestaurantTableService restaurantTableService;
 
-	@RequestMapping(method=RequestMethod.GET, value="/")
-	public String index(Model model) {
-		model.addAttribute("restaurantName", "Test Restaurant");
-		return "index";
-	}
-	
-	@RequestMapping(method=RequestMethod.GET, value="/add")
-	public String addReservation(Model model) {
-		return "addReservation";
-	}
-	
-	@RequestMapping(method=RequestMethod.GET, value="/confirm")
-	public String confirmReservation(Model model, @RequestParam(value="partySize") Short partySize, @RequestParam(value="targetTime") String targetTimeString) {
-		RestaurantTable openRestaurantTable = restaurantTableService.getOpenRestaurantTable(partySize, targetTimeString);
-		if (openRestaurantTable != null) {
-			model.addAttribute("tableId", openRestaurantTable.getId());
-			model.addAttribute("partySize", partySize);
-			model.addAttribute("targetTime", targetTimeString);
-			return "confirmReservation";
-		} else {
-			return "noTableAvailable";
-		}
-	}
-	
-	@RequestMapping(method=RequestMethod.POST, value="/confirm")
-	public String saveReservation(Model model, @RequestParam(value="tableId") Short tableId,
-			@RequestParam(value="startTime") String startTimeString) {
-		RestaurantTable restaurantTable = restaurantTableService.findRestaurantTable(tableId);
-		Reservation reservation = reservationService.createReservation(restaurantTable, startTimeString);
-		if (reservation != null) {
-			return "reserveSuccess";
-		} else {
-			return "reserveFailure";
-		}
-	}
+    @Autowired
+    ReservationService reservationService;
+
+    @Autowired
+    RestaurantTableService restaurantTableService;
+
+    @RequestMapping(method=RequestMethod.GET, value="/")
+    public String index(Model model) {
+        model.addAttribute("restaurantName", "Test Restaurant");
+        return "index";
+    }
+
+    @RequestMapping(method=RequestMethod.GET, value="/add")
+    public String addReservation(Model model) {
+        return "addReservation";
+    }
+
+    @RequestMapping(method=RequestMethod.GET, value="/confirm")
+    public String confirmReservation(Model model, @RequestParam(value="partySize") Short partySize, @RequestParam(value="targetTime") String targetTimeString) {
+        RestaurantTable openRestaurantTable = restaurantTableService.getOpenRestaurantTable(partySize, targetTimeString);
+        if (openRestaurantTable != null) {
+            model.addAttribute("tableId", openRestaurantTable.getId());
+            model.addAttribute("partySize", partySize);
+            model.addAttribute("targetTime", targetTimeString);
+            return "confirmReservation";
+        } else {
+            return "noTableAvailable";
+        }
+    }
+
+    @RequestMapping(method=RequestMethod.POST, value="/confirm")
+    public String saveReservation(Model model, @RequestParam(value="tableId") Short tableId,
+            @RequestParam(value="startTime") String startTimeString) {
+        RestaurantTable restaurantTable = restaurantTableService.findRestaurantTable(tableId);
+        Reservation reservation = reservationService.createReservation(restaurantTable, startTimeString);
+        if (reservation != null) {
+            return "reserveSuccess";
+        } else {
+            return "reserveFailure";
+        }
+    }
 }

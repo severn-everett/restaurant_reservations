@@ -15,21 +15,21 @@ import com.severett.restaurants.services.DateHoursService;
 @RestController
 @RequestMapping("/availability")
 public class AvailabilityRestController {
-	
-	private static final String BEGIN_HOUR = "beginHour";
-	private static final String END_HOUR = "endHour";
-	
-	@Autowired
-	DateHoursService dateHoursService;
-	
-	@RequestMapping(method=RequestMethod.GET, value="/hours")
-	public Map<String, Short> getAvailableHours(@RequestParam(value="date") String targetDateString) {
-		Map<String, Short> hoursMap = new HashMap<>();
-		DateHours dateHours = dateHoursService.getDateHours(targetDateString);
-		if (dateHours != null) {
-			hoursMap.put(BEGIN_HOUR, dateHours.getStartHour());
-			hoursMap.put(END_HOUR, dateHours.getEndHour());
-		}
-		return hoursMap;
-	}	
+
+    private static final String BEGIN_HOUR = "beginHour";
+    private static final String END_HOUR = "endHour";
+
+    @Autowired
+    DateHoursService dateHoursService;
+
+    @RequestMapping(method=RequestMethod.GET, value="/hours")
+    public Map<String, Short> getAvailableHours(@RequestParam(value="date") String targetDateString) {
+        Map<String, Short> hoursMap = new HashMap<>();
+        DateHours dateHours = dateHoursService.getDateHours(targetDateString);
+        if (dateHours != null) {
+            hoursMap.put(BEGIN_HOUR, dateHours.getStartHour());
+            hoursMap.put(END_HOUR, dateHours.getEndHour());
+        }
+        return hoursMap;
+    }
 }

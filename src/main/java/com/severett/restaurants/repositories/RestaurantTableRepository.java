@@ -13,9 +13,9 @@ import com.severett.restaurants.model.RestaurantTable;
 @Repository
 public interface RestaurantTableRepository extends JpaRepository<RestaurantTable, Short> {
 
-	@Query("select rt from RestaurantTable rt join rt.reservations r where rt.capacity = :partySize and rt.id not in "
-			+ "(select rv.restaurantTable.id from Reservation rv where (rv.startTime < :startTime and rv.endTime > :startTime) or "
-			+ "(rv.startTime < :endTime and rv.endTime > :endTime))")
-	public List<RestaurantTable> findBySizeAndTimeWindow(@Param("partySize") Short partySize, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
-	
+    @Query("select rt from RestaurantTable rt join rt.reservations r where rt.capacity = :partySize and rt.id not in "
+            + "(select rv.restaurantTable.id from Reservation rv where (rv.startTime < :startTime and rv.endTime > :startTime) or "
+            + "(rv.startTime < :endTime and rv.endTime > :endTime))")
+    public List<RestaurantTable> findBySizeAndTimeWindow(@Param("partySize") Short partySize, @Param("startTime") Date startTime, @Param("endTime") Date endTime);
+
 }
