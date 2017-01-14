@@ -1,13 +1,13 @@
 \c restaurant_reservations;
 
 INSERT INTO DATE_HOURS (ID, START_HOUR, END_HOUR) VALUES
-(1, 10, 7),
-(2, 11, 9),
-(3, 11, 9),
-(4, 11, 9),
-(5, 11, 9),
-(6, 11, 10),
-(7, 10, 10);
+(1, 10, 19),
+(2, 11, 21),
+(3, 11, 21),
+(4, 11, 21),
+(5, 11, 21),
+(6, 11, 22),
+(7, 10, 22);
 
 INSERT INTO RESTAURANT_TABLE (ID, CAPACITY) VALUES
 (1, 2),
