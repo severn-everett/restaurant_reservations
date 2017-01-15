@@ -14,9 +14,9 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="RESERVATION")
-public class Reservation implements Serializable {
+public class Reservation extends AuditableEntity implements Serializable {
 
-    private static final long serialVersionUID = -9096118012365741262L;
+    private static final long serialVersionUID = -3060520479808724179L;
 
     @Id
     @GeneratedValue
@@ -25,6 +25,10 @@ public class Reservation implements Serializable {
     @ManyToOne(fetch=FetchType.LAZY)
     @JoinColumn(name="RESTAURANT_TABLE_ID")
     private RestaurantTable restaurantTable;
+
+    @ManyToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="GUEST_ID")
+    private Guest guest;
 
     @Column(name="START_TIME", nullable=false)
     private Date startTime;
@@ -35,8 +39,9 @@ public class Reservation implements Serializable {
     protected Reservation() {
     }
 
-    public Reservation(RestaurantTable restaurantTable, Date startTime, Date endTime) {
+    public Reservation(RestaurantTable restaurantTable, Guest guest, Date startTime, Date endTime) {
         this.restaurantTable = restaurantTable;
+        this.guest = guest;
         this.startTime = startTime;
         this.endTime = endTime;
     }
@@ -55,6 +60,14 @@ public class Reservation implements Serializable {
 
     public void setRestaurantTable(RestaurantTable restaurantTable) {
         this.restaurantTable = restaurantTable;
+    }
+    
+    public Guest getGuest() {
+        return this.guest;
+    }
+    
+    public void setGuest(Guest guest) {
+        this.guest = guest;
     }
 
     public Date getStartTime() {

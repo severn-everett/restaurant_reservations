@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service;
 
 import com.severett.restaurants.model.RestaurantTable;
 import com.severett.restaurants.repositories.RestaurantTableRepository;
+import com.severett.restaurants.util.RestaurantConstants;
 
 @Service
 public class RestaurantTableServiceImpl implements RestaurantTableService {
 
     private static final Logger logger = LoggerFactory.getLogger(RestaurantTableService.class);
-    private static final DateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
 
     @Autowired
     RestaurantTableRepository restaurantTableRepository;
@@ -33,6 +33,7 @@ public class RestaurantTableServiceImpl implements RestaurantTableService {
     public RestaurantTable getOpenRestaurantTable(Short partySize, String targetTimeString) {
         try {
             logger.info("Searching for a table of {} at {}", partySize, targetTimeString);
+            DateFormat df = new SimpleDateFormat(RestaurantConstants.TIME_FORMAT);
             Date startTime = df.parse(targetTimeString);
             Calendar calendar = Calendar.getInstance();
             calendar.setTime(startTime);

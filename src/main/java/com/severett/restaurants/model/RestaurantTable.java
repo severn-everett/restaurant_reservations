@@ -34,7 +34,7 @@ public class RestaurantTable implements Serializable {
     }
 
     public Short getId() {
-        return id;
+        return this.id;
     }
 
     public void setId(Short id) {
@@ -42,7 +42,7 @@ public class RestaurantTable implements Serializable {
     }
 
     public Short getCapacity() {
-        return capacity;
+        return this.capacity;
     }
 
     public void setCapacity(Short capacity) {
@@ -50,7 +50,7 @@ public class RestaurantTable implements Serializable {
     }
 
     public Set<Reservation> getReservations() {
-        return reservations;
+        return this.reservations;
     }
 
     public void setReservations(Set<Reservation> reservations) {

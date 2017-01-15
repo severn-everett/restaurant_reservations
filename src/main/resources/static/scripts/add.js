@@ -5,7 +5,7 @@ $(function () {
         minDate: currentDate,
         maxDate: "+1m",
         currentText: "Today",
-        dateFormat: 'yy-mm-dd'
+        dateFormat: 'mm/dd/yy'
     });
     $("#datepicker").change(function() {
         var selectedDate = $("#datepicker").val();
@@ -35,7 +35,7 @@ $(function () {
             }
         }});
     });
-    $("#datepicker").val(currentDate.toISOString().slice(0,10));
+    $("#datepicker").val($.datepicker.formatDate('mm/dd/yy', currentDate));
     $.widget("ui.timespinner", $.ui.spinner, {
         options: {
             // seconds

@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.severett.restaurants.model.DateHours;
 import com.severett.restaurants.services.DateHoursService;
+import com.severett.restaurants.util.DateHours;
 
 @RestController
 @RequestMapping("/availability")
@@ -23,8 +23,8 @@ public class AvailabilityRestController {
     DateHoursService dateHoursService;
 
     @RequestMapping(method=RequestMethod.GET, value="/hours")
-    public Map<String, Short> getAvailableHours(@RequestParam(value="date") String targetDateString) {
-        Map<String, Short> hoursMap = new HashMap<>();
+    public Map<String, Integer> getAvailableHours(@RequestParam(value="date") String targetDateString) {
+        Map<String, Integer> hoursMap = new HashMap<>();
         DateHours dateHours = dateHoursService.getDateHours(targetDateString);
         if (dateHours != null) {
             hoursMap.put(BEGIN_HOUR, dateHours.getStartHour());

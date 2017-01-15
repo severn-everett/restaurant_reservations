@@ -1,6 +1,6 @@
 package com.severett.restaurants.services;
 
-import com.severett.restaurants.model.DateHours;
+import com.severett.restaurants.util.DateHours;
 
 public interface DateHoursService {
 
