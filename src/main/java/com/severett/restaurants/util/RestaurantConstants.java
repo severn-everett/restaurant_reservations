@@ -4,17 +4,6 @@ import java.util.Calendar;
 import java.util.HashMap;
 import java.util.Map;
 
-/*
-INSERT INTO DATE_HOURS (ID, START_HOUR, END_HOUR) VALUES
-(1, 10, 19),
-(2, 11, 21),
-(3, 11, 21),
-(4, 11, 21),
-(5, 11, 21),
-(6, 11, 22),
-(7, 10, 22);
- */
-
 public class RestaurantConstants {
 
     public static final String DATE_FORMAT = "MM/dd/yyyy";

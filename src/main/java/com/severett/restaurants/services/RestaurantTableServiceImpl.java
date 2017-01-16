@@ -39,6 +39,7 @@ public class RestaurantTableServiceImpl implements RestaurantTableService {
             calendar.setTime(startTime);
             calendar.set(Calendar.HOUR_OF_DAY, calendar.get(Calendar.HOUR_OF_DAY) + 1);
             Date endTime = calendar.getTime();
+            partySize = (short) (partySize + partySize % 2); // Rounding up to reflect even-numbered table capacities
             List<RestaurantTable> tableList = restaurantTableRepository.findBySizeAndTimeWindow(partySize, startTime, endTime);
             if (!tableList.isEmpty()) {
                 return tableList.get(0);

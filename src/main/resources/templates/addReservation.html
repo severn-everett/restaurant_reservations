@@ -2,7 +2,7 @@
 <html>
     <head>
         <meta charset="UTF-8" />
-        <title>Add Reservation</title>
+        <title>Create Reservation</title>
         <link rel="stylesheet" href="/stylesheets/jquery-ui.min.css" />
         <script type="text/javascript" src="/scripts/jquery-3.1.1.min.js"></script>
         <script type="text/javascript" src="/scripts/jquery-ui.min.js"></script>
@@ -12,8 +12,14 @@
         <script type="text/javascript" src="/scripts/add.js"></script>
     </head>
     <body>
-        <h1>Select A Reservation</h1>
-        <p><label for="datepicker">Date:</label><input type="text" id="datepicker" /></p>
-        <p><label for="timespinner">Time:</label><input id="timespinner" /></p>
+        <h1>Pick Your Reservation Time:</h1>
+        <p><label for="dateSpinner">Date:</label><input id="dateSpinner" type="text" /></p>
+        <p><label for="timeSpinner">Time:</label><input id="timeSpinner" /></p>
+        <p><label for="partySizeSpinner">Party Size:</label><input id="partySizeSpinner" /></p>
+        <button id="findTable" type="button">Find A Table</button>
+        <form id="tableSearchForm" action="/confirm" method="get">
+            <input id="partySize" name="partySize" type="hidden" />
+            <input id="targetTime" name="targetTime" type="hidden" />
+        </form>
     </body>
 </html>
