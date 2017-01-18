@@ -6,8 +6,10 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +19,8 @@ public class Guest extends AuditableEntity implements Serializable {
     private static final long serialVersionUID = -3081245400304090660L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "guest_seq_gen")
+    @SequenceGenerator(name = "guest_seq_gen", sequenceName = "guest_seq")
     private Integer id;
 
     @Column(name="FIRST_NAME", nullable=false)

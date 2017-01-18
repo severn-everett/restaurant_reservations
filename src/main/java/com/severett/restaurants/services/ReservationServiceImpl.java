@@ -31,6 +31,9 @@ public class ReservationServiceImpl implements ReservationService {
             calendar.set(Calendar.HOUR, calendar.get(Calendar.HOUR) + 1);
             Date endTimeDate = calendar.getTime();
             Reservation reservation = new Reservation(restaurantTable, guest, startTimeDate, endTimeDate);
+            Date currentTime = new Date();
+            reservation.setCreatedDate(currentTime);
+            reservation.setUpdatedDate(currentTime);
             return reservationRepository.saveAndFlush(reservation);
         } catch (ParseException e) {
             e.printStackTrace();

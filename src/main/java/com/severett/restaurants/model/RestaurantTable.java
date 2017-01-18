@@ -6,8 +6,10 @@ import java.util.Set;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -17,7 +19,8 @@ public class RestaurantTable implements Serializable {
     private static final long serialVersionUID = 3355578631079182599L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "restaurant_table_seq_gen")
+    @SequenceGenerator(name = "restaurant_table_seq_gen", sequenceName = "restaurant_table_seq")
     private Short id;
 
     @Column(name="CAPACITY", nullable=false)

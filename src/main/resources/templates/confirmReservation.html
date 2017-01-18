@@ -6,5 +6,13 @@
     </head>
     <body>
         <h1>Confirm Selection</h1>
+        <form id="confirmationForm" action="/confirm" method="post">
+            <input type="hidden" id="tableId" name="tableId" th:value="${tableId}"/>
+            <p><label for="partySize">Party Size:</label><input id="partySize" name="partySize" type="text" readonly="readonly" th:value="${partySize}"/></p>
+            <p><label for="targetTime">Time:</label><input id="targetTime" name="targetTime" type="text" readonly="readonly" th:value="${targetTime}"/></p>
+            <p><label for="firstName">Enter First Name:</label><input id="firstName" name="firstName" type="text" /></p>
+            <p><label for="lastName">Enter Last Name:</label><input id="lastName" name="lastName" type="text" /></p>
+            <input type="submit" />
+        </form>
     </body>
 </html>

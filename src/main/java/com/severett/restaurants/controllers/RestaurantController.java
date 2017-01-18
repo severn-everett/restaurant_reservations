@@ -52,7 +52,7 @@ public class RestaurantController {
 
     @RequestMapping(method=RequestMethod.POST, value="/confirm")
     public String saveReservation(Model model, @RequestParam(value="tableId") Short tableId,
-            @RequestParam(value="startTime") String startTimeString, @RequestParam(value="firstName") String firstName, @RequestParam(value="lastName") String lastName) {
+            @RequestParam(value="targetTime") String startTimeString, @RequestParam(value="firstName") String firstName, @RequestParam(value="lastName") String lastName) {
         RestaurantTable restaurantTable = restaurantTableService.findRestaurantTable(tableId);
         Guest guest = guestService.createGuest(firstName, lastName);
         Reservation reservation = reservationService.createReservation(restaurantTable, guest, startTimeString);

@@ -16,11 +16,11 @@ $(function () {
             var endTime = response.endHour > 12 ?
                     (response.endHour - 12) + ":00 PM" :
                     response.endHour + ":00 AM";
-            $("#timePicker").timepicker({
+            $("#timeSpinner").timepicker({
                 min: beginTime,
                 max: endTime
             });
-            var currentTimeSel = $("#timePicker").val();
+            var currentTimeSel = $("#timeSpinner").val();
             if (currentTimeSel != null) {
                 currentTimeSel = Date.parse("January 1, 2000, " + currentTimeSel);
                 var beginTimeDate = Date.parse("January 1, 2000, " + beginTime);
