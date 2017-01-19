@@ -1,10 +1,8 @@
 package com.severett.restaurants.services;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 
 import org.apache.logging.log4j.util.Strings;
 import org.slf4j.Logger;
@@ -23,17 +21,13 @@ public class DateHoursServiceImpl implements DateHoursService {
     public DateHours getDateHours(String targetDateString) {
         if (Strings.isNotBlank(targetDateString)) {
             try {
-                DateFormat df = new SimpleDateFormat(RestaurantConstants.DATE_FORMAT);
                 targetDateString = targetDateString.trim();
                 logger.info("Request for available hours for date {}", targetDateString);
-                Date targetDate = df.parse(targetDateString);
-                Calendar calendar = Calendar.getInstance();
-                calendar.setTime(targetDate);
-                int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
-                return RestaurantConstants.DATE_HOURS_MAP.get(dayOfWeek);
-            } catch (ParseException pe) {
-                logger.error("Error parsing date:", pe);
-                pe.printStackTrace();
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern(RestaurantConstants.DATE_FORMAT);
+                LocalDate localDate = LocalDate.parse(targetDateString, formatter);
+                return RestaurantConstants.DATE_HOURS_MAP.get(localDate.getDayOfWeek());
+            } catch (DateTimeParseException dtpe) {
+                logger.error("Error parsing date: " + dtpe.getMessage());
                 return null;
             }
         } else {
