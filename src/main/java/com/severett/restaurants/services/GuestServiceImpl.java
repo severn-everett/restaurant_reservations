@@ -1,6 +1,7 @@
 package com.severett.restaurants.services;
 
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,7 +21,19 @@ public class GuestServiceImpl implements GuestService {
         Date currentTime = new Date();
         guest.setCreatedDate(currentTime);
         guest.setUpdatedDate(currentTime);
-        return guestRepository.saveAndFlush(guest);
+        return saveEntity(guest);
+    }
+
+    @Override
+    public Guest saveEntity(Guest entity) {
+        return guestRepository.saveAndFlush(entity);
+    }
+
+    @Override
+    public List<Guest> saveEntities(Iterable<Guest> entities) {
+        List<Guest> savedEntities = guestRepository.save(entities);
+        guestRepository.flush();
+        return savedEntities;
     }
 
 }

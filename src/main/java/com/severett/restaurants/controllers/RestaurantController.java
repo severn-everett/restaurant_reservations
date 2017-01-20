@@ -57,6 +57,8 @@ public class RestaurantController {
         Guest guest = guestService.createGuest(firstName, lastName);
         Reservation reservation = reservationService.createReservation(restaurantTable, guest, startTimeString);
         if (reservation != null) {
+            restaurantTable.getReservations().add(reservation);
+            restaurantTableService.saveEntity(restaurantTable);
             return "reserveSuccess";
         } else {
             return "reserveFailure";

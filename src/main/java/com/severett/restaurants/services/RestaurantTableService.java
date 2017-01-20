@@ -2,7 +2,7 @@ package com.severett.restaurants.services;
 
 import com.severett.restaurants.model.RestaurantTable;
 
-public interface RestaurantTableService {
+public interface RestaurantTableService extends EntityService<RestaurantTable> {
 
     public RestaurantTable findRestaurantTable(Short tableId);
 
