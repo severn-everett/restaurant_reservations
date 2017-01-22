@@ -73,7 +73,7 @@ $(function () {
 
     $("#findTable").click(function() {
         var selectedDate = Date.parse($("#timeSpinner").val() + " " + $("#dateSpinner").val());
-        $("#targetTime").val(selectedDate.toString("M/dd/yyyy HH:mm"));
+        $("#targetTime").val(selectedDate.toString("MM/dd/yyyy HH:mm"));
         $("#partySize").val($("#partySizeSpinner").val());
         $("#tableSearchForm").submit();
     });

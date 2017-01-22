@@ -1,6 +1,7 @@
 package com.severett.restaurants.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -34,6 +35,7 @@ public class RestaurantTable implements Serializable {
 
     public RestaurantTable(Short capacity) {
         this.capacity = capacity;
+        this.reservations = new HashSet<>();
     }
 
     public Short getId() {
